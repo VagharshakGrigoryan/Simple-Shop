@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+	<title>Login</title>
+	<link href="css/main.css" rel="stylesheet" type="text/css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+
+<div class="container-login100">
+	<div class="wrap-login100">
+		<div class="login100-pic js-tilt" data-tilt>
+			<img src="data:image/jpeg;base64,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" alt="IMG" style="text-align: center">
+		</div>
+	<div th:if="${message != null}" class="alert alert-success mx-auto mt-3" role="alert" style="width: 200px;">
+      <p class="text-center" th:text="${message}">Successful message</p>
+    </div>
+
+	<div class="signup-form my-auto mx-auto">
+		<form th:action="@{/register}" th:object="${user}" method="post">
+		<span class="login100-form-title">
+						Registration
+						<br>
+							<div class="wrap-input100 validate-input" data-validate = "Password is required">
+<br>
+>
+				<label>
+					<input type="text" class="form-control" placeholder="Username" th:field="*{username}">
+				</label>
+				<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name
+					Error</p>
+			</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Password is required">
+>
+					<label>
+						<input type="text" class="form-control" placeholder="First Name" th:field="*{firstName}">
+					</label>
+					<p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">first name
+					Error</p>
+				</div>
+				<div class="wrap-input100 validate-input" data-validate = "Password is required">
+>
+					<label>
+						<input type="text" class="form-control" placeholder="Last Name" th:field="*{lastName}">
+					</label>
+					<p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name
+					Error</p>
+				</div>
+
+			<div class="wrap-input100 validate-input" data-validate = "Password is required">
+>
+				<label>
+					<input type="email" class="form-control" placeholder="Email" th:field="*{email}">
+				</label>
+				<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email
+					Error</p>
+			</div>
+			<div class="wrap-input100 validate-input" data-validate = "Password is required">
+>
+				<label>
+					<input type="password" class="form-control" placeholder="Password" th:field="*{password}">
+				</label>
+				<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password
+					Error</p>
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary btn-block btn-lg">Sign
+					Up</button>
+			</div>
+		</span>	</form></div>
+		<div class="text-center">
+			Already have an account? <a th:href="@{/login}">Login here</a>.
+		</div>
+	</div>
+	</div>
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/select2/select2.min.js"></script>
+<script src="vendor/tilt/tilt.jquery.min.js"></script>
+<script >
+	$('.js-tilt').tilt({
+		scale: 1.1
+	})
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

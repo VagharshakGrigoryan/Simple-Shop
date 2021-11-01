@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js">
+    <title>Messages</title>
+</head>
+<body>
+<header th:insert="bloks/header :: header"></header>
+<div class="container mt-5">
+
+<div th:each="message:${messages}" class="alert alert-info mt-2">
+
+
+            <td th:text="${message.fromUser.firstName}"></td>
+            <td th:text="${message.sms}"></td>
+
+</div>
+<div th:insert="bloks/footer :: footer"></div>
+
+
+    <br>
+    <br>
+</div>
+</body>
+</html>

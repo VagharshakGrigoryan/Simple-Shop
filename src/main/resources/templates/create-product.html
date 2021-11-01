@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Shop</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js">
+</head>
+<body>
+<header th:insert="bloks/sub :: header"></header>
+
+<div class="container mt-5 mb-xxl-5">
+    <div class="container mt-5 mb-xxl-5">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <h2 class="text-center">New product</h2>
+            <form th:action="@{/products/add}" method="post" th:object="${product}">
+                <div class="form-group">
+                    <label>Name: </label>
+                    <br>
+                    <label>
+                        <input type="text" name="title" placeholder="add name "
+                               class="form-control" size="200" th:field="*{name}">
+                    </label>
+                    <div class="alert alert-danger" th:each="error : ${#fields.errors('name')}"
+                         th:text="|Name ${error}|"></div>
+                </div>
+                <div class="form-group">
+                    <label>Description: </label>
+                    <br>
+                    <label>
+ <textarea rows="2" cols="165" name="text" placeholder="description"
+           class="form-control" th:field="*{description}"></textarea> </label>
+                </div>
+                <div class="form-group">
+                    <label>URL: </label>
+                    <br>
+                    <label>
+                        <input type="text" name="title" th:field="*{url}" placeholder="URL" class="form-control"
+                               size="200"/>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Category: </label>
+                    <br>
+                    <label for="category.id"></label><label for="category.id"></label><label
+                        for="category.id"></label><select class="form-control" id="category.id" name="category.id">
+                    <option th:value="${null}" th:selected="*{category} == null" disabled>Select a category</option>
+                    <option th:each="cat : ${categories}"
+                            th:value="${cat.id}"
+                            th:text="${cat.name}"
+                            th:selected="*{category} and *{category.id} == ${cat.id}"></option>
+                </select>
+                    <div class="alert alert-danger" th:if="${#fields.hasErrors('category')}">Please select a category
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Price: </label>
+                    <br>
+                    <label>
+                        <input class="form-control" type="number" th:field="*{price}" placeholder="Price"/>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    Submit
+                </button>
+            </form>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+
+<div th:insert="bloks/footer :: footer"></div>
+</body>
+</html>
