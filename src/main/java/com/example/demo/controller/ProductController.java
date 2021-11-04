@@ -29,7 +29,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -40,14 +39,14 @@ import java.util.stream.IntStream;
 @RequiredArgsConstructor
 @Slf4j
 @RequestMapping("/products")
+@SessionAttributes("cart")
 public class ProductController {
 
     private final ProductService productService;
     private final ProductServiceImpl productServiceimpl;
     private final CategoryService categoryService;
-
-    private final TransactionService transactionService;
     private final ProductRepository productRepository;
+    private final TransactionService transactionService;
     private final CommentService commentService;
 
     @Value("${STRIPE_PUBLIC_KEY}")
@@ -77,7 +76,7 @@ public class ProductController {
         }
 
         modelMap.addAttribute("products", products);
-        log.info("Employe with {} username opened product page, product.size = {}",
+        log.info("User with {} username opened product page, product.size = {}",
                 product.getId(),
                 products.getSize());
         return "products";
@@ -94,9 +93,7 @@ public class ProductController {
     }
 
     @GetMapping("/{productId}")
-    private String showProduct(@PathVariable Long productId, ModelMap modelMap) {
-
-        //todo getProductById
+    private String getProductById(@PathVariable Long productId, ModelMap modelMap) {
         Product product = productService.getProduct(productId);
         List<Comment> comments = commentService.getAllCommentsByPostId(productId);
         modelMap.addAttribute("comments", comments);
@@ -124,8 +121,7 @@ public class ProductController {
 
     @PostMapping("/add")
     private String addProduct(@Valid Product product, BindingResult bindingResult,
-                              Model model, HttpServletRequest request,
-                              @AuthenticationPrincipal CurrentUser currentUser) {
+                              Model model, @AuthenticationPrincipal CurrentUser currentUser) {
 
         List<Category> categories = categoryService.getCategories();
         if (bindingResult.hasErrors()) {
@@ -141,7 +137,7 @@ public class ProductController {
 
         product.setCategory(selectedCategory.get());
 
-            product.setUser(currentUser.getUser());
+        product.setUser(currentUser.getUser());
 
         productService.saveProduct(product);
         return "redirect:/products";
@@ -158,7 +154,8 @@ public class ProductController {
     }
 
     @PostMapping("/{productId}")
-    private String updateProduct(@PathVariable Long productId, Product formProduct) {
+    private String updateProduct(@PathVariable Long productId,
+                                 Product formProduct) {
 
         Product product = productService.getProduct(productId);
         product.setDescription(formProduct.getDescription());
@@ -189,4 +186,5 @@ public class ProductController {
 
         return "products";
     }
+
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js">
@@ -9,20 +9,47 @@
 </head>
 <body>
 <header th:insert="bloks/header :: header"></header>
+
+
 <div class="container mt-5">
 
-<div th:each="message:${messages}" class="alert alert-info mt-2">
+
+    <div th:each="message:${messages}" class="alert alert-info mt-2">
 
 
-            <td th:text="${message.fromUser.firstName}"></td>
-            <td th:text="${message.sms}"></td>
+       <h3 style="color: #c01508;"> <td th:text="${message.fromUser.firstName}"></td></h3>
+        <td th:text="${message.sms}"></td>
+        <div style="right: auto">
+            <a th:href="@{/deleteMessage/{id}(id=${message.getId()})}" href="#"
+               class="btn btn-warning"><span>delete</span></a>
+        </div>
+    </div>
 
+    <form th:action="@{/sendMessage}" method="post">
+        <label>
+            <textarea rows="2" cols="165" name="sms" class="form-control"></textarea>
+        </label>
+        <br>
+        <br>
+        <label>
+            <select name="toUser.id">
+                <option th:each="user: ${userID}" th:text="${user.firstName}" th:value="${user.id}"
+                        class="form-control"></option>
+            </select>
+        </label>
+        <br>
+        <br>
+        <button style="text-align: center" type="submit" class="btn btn-success"> send</button>
+
+    </form>
 </div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <div th:insert="bloks/footer :: footer"></div>
-
-
-    <br>
-    <br>
-</div>
 </body>
 </html>

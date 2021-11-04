@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,30 +26,33 @@
         <div class="row d-flex align-items-center gy-4">
             <div class="input-group">
                 <div id="search-autocomplete" class="form-outline">
-                    <label class="form-label" for="form1"></label>
+                    <label class="form-label" ></label>
                 </div>
 
-            </div>  </div>
-
-
-
-            <div class="row d-flex align-items-center gy-4">
-                <h1 class="h2 mb-0 text-uppercase"><form th:action="@{/products/search}">
-                    <input type="text" class="form-control" name="keyword" id="keyword" size="50"  placeholder="search product" th:value="${keyword}" required />
-                    <br>
-                    <button class="btn btn-primary">Search</button>
-                    <input class="btn btn-primary" type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
-                </form></h1>
-            </div>
-            <div class="col-md-5">
-                <!-- Breadcrumb-->
-                <ol class="text-sm justify-content-start justify-content-lg-end mb-0 breadcrumb undefined">
-                    <li class="breadcrumb-item"><a class="text-uppercase" href="/">Home</a></li>
-                    <li class="breadcrumb-item text-uppercase active">Product sheet
-                    </li>
-                </ol>
             </div>
         </div>
+
+
+        <div class="row d-flex align-items-center gy-4">
+            <h1 class="h2 mb-0 text-uppercase">
+                <form th:action="@{/products/search}">
+                    <input type="text" class="form-control" name="keyword" id="keyword" size="50"
+                           placeholder="search product" th:value="${keyword}" required/>
+                    <br>
+                    <button class="btn btn-primary">Search</button>
+                    <input class="btn btn-primary" type="button" value="Clear" id="btnClear" onclick="clearSearch()"/>
+                </form>
+            </h1>
+        </div>
+        <div class="col-md-5">
+            <!-- Breadcrumb-->
+            <ol class="text-sm justify-content-start justify-content-lg-end mb-0 breadcrumb undefined">
+                <li class="breadcrumb-item"><a class="text-uppercase" href="/">Home</a></li>
+                <li class="breadcrumb-item text-uppercase active">Product sheet
+                </li>
+            </ol>
+        </div>
+    </div>
 
 </section>
 <!-- SHOP SECTION-->
@@ -91,14 +94,18 @@
                         </div>
                     </div>
 
-                    <div class="container mt-5" >
+                    <div class="container mt-5">
                         <style>
                             ul.pagination {
                                 display: inline-block;
                                 padding: 0;
                                 margin: 0;
                             }
-                            ul.pagination li {display: inline;}
+
+                            ul.pagination li {
+                                display: inline;
+                            }
+
                             ul.pagination li a {
                                 color: #ffffff;
                                 float: left;
@@ -109,12 +116,13 @@
                         <!--/*@thymesVar id="totalPages" type="com.example.OnlinSite.controller.ProductController"*/-->
                         <ul class="pagination" th:if="${products.totalPages > 0}" th:each="pageNumber : ${pageNumbers}">
 
-                            <li class="page-item" ><!--/*@thymesVar id="pageNumber" type="com.example.OnlinSite.controller.ProductController"*/-->
-                            <a th:href="@{/products(size=${products.size}, page=${pageNumber})}"
-                                                     th:text="${pageNumber}"
-                                                     th:class="${pageNumber==products.number + 1} ? active"
-                                                     class="btn btn-warning" style="color: #1f1f1f">
-                                1</a></li>
+                            <li class="page-item">
+                                <!--/*@thymesVar id="pageNumber" type="com.example.OnlinSite.controller.ProductController"*/-->
+                                <a th:href="@{/products(size=${products.size}, page=${pageNumber})}"
+                                   th:text="${pageNumber}"
+                                   th:class="${pageNumber==products.number + 1} ? active"
+                                   class="btn btn-warning" style="color: #1f1f1f">
+                                    1</a></li>
                         </ul>
 
                     </div>
@@ -147,44 +155,28 @@
                                     class="ps-2">Accessories</span></a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link active" href="shop-category.html">
-                        <div class="d-flex align-items-center justify-content-between"><span
-                                class="fw-bold text-uppercase">Ladies</span>
-                            <div class="badge bg-white text-primary">123</div>
-                        </div>
-                    </a>
-                        <ul class="list-unstyled text-sm text-muted mb-0">
-                            <li><a class="nav-link ps-4 text-muted letter-spacing-1" href="shop-category.html"> <span
-                                    class="ps-2">T-shirts</span></a></li>
-                            <li><a class="nav-link ps-4 text-muted letter-spacing-1" href="shop-category.html"> <span
-                                    class="ps-2">Shirts</span></a></li>
-                            <li><a class="nav-link ps-4 text-muted letter-spacing-1" href="shop-category.html"> <span
-                                    class="ps-2">Pants</span></a></li>
-                            <li><a class="nav-link ps-4 text-muted letter-spacing-1" href="shop-category.html"> <span
-                                    class="ps-2">Accessories</span></a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="shop-category.html">
-                        <div class="d-flex align-items-center justify-content-between"><span
-                                class="fw-bold text-uppercase">Kds</span>
-                            <div class="badge bg-secondary">11</div>
-                        </div>
-                    </a>
-                        <ul class="list-unstyled text-sm text-muted mb-0">
-                            <li><a class="nav-link ps-4 text-muted letter-spacing-1" href="shop-category.html"> <span
-                                    class="ps-2">T-shirts</span></a></li>
-                            <li><a class="nav-link ps-4 text-muted letter-spacing-1" href="shop-category.html"> <span
-                                    class="ps-2">Shirts</span></a></li>
-                            <li><a class="nav-link ps-4 text-muted letter-spacing-1" href="shop-category.html"> <span
-                                    class="ps-2">Pants</span></a></li>
-                            <li><a class="nav-link ps-4 text-muted letter-spacing-1" href="shop-category.html"> <span
-                                    class="ps-2">Accessories</span></a></li>
-                        </ul>
-                    </li>
+
+
+                    <a class="d-inline-block" href="#"><!--Currency Converter widget by FreeCurrencyRates.com -->
+
+                        <div id='gcw_mainFXZ8obmWK' class='gcw_mainFXZ8obmWK'></div>
+                        <a id='gcw_siteFXZ8obmWK' href='https://freecurrencyrates.com/ru/'></a>
+                        <script>function reloadFXZ8obmWK() {
+                            var sc = document.getElementById('scFXZ8obmWK');
+                            if (sc) sc.parentNode.removeChild(sc);
+                            sc = document.createElement('script');
+                            sc.type = 'text/javascript';
+                            sc.charset = 'UTF-8';
+                            sc.async = true;
+                            sc.id = 'scFXZ8obmWK';
+                            sc.src = 'https://freecurrencyrates.com/ru/widget-vertical-editable?iso=USD-EUR-XUL&df=2&p=FXZ8obmWK&v=fits&source=fcr&width=270&width_title=0&firstrowvalue=1&thm=E0CFC2,F4F0EC,D49768,CB842E,FFFFFF,E0CFC2,F4F0EC,B85700,000000&title=%D0%9A%D0%BE%D0%BD%D0%B2%D0%B5%D1%80%D1%82%D0%B5%D1%80%20%D0%B2%D0%B0%D0%BB%D1%8E%D1%82&tzo=-240';
+                            var div = document.getElementById('gcw_mainFXZ8obmWK');
+                            div.parentNode.insertBefore(sc, div);
+                        }
+
+                        reloadFXZ8obmWK(); </script>
+                       </a>
                 </ul>
-
-
-                <a class="d-inline-block" href="#"><img class="img-fluid" src="img/banner.jpg" alt=""></a>
             </div>
         </div>
     </div>

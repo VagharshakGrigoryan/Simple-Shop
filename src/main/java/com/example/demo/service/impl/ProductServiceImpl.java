@@ -3,7 +3,7 @@ package com.example.demo.service.impl;
 import com.example.demo.model.Product;
 import com.example.demo.repasitory.ProductRepository;
 import com.example.demo.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -14,10 +14,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
+
+    private final ProductRepository productRepository;
 
     @Override
     public List<Product> getProducts() {
@@ -30,7 +31,6 @@ public class ProductServiceImpl implements ProductService {
 
         return productRepository.findAll(pageRequest);
     }
-
 
     @Override
     public Product getProduct(Long id) {
@@ -64,11 +64,6 @@ public class ProductServiceImpl implements ProductService {
         return Optional.empty();
     }
 
-
-    @Autowired
-    public void setProductRepository(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
     public Product get(Long id) {
         return productRepository.findById(id).get();
     }

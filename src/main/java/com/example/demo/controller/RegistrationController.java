@@ -49,7 +49,7 @@ public class RegistrationController {
         userService.userAdd(user, currentUser, locale);
         userRepository.save(user);
         redirectAttributes.addFlashAttribute("message", "REGISTRATION SUCCESS");
-        return "redirect:/register";
+        return "redirect:/login";
     }
 
     @GetMapping("/verifyEmail")
@@ -60,15 +60,4 @@ public class RegistrationController {
         return "verifyTemplate";
     }
 
-    @PostMapping("/register")
-    public String userAdd(@ModelAttribute User user,
-                          @AuthenticationPrincipal CurrentUser currentUser, Locale locale) {
-        User byEmail = userService.findByEmail(user.getEmail());
-        if (byEmail != null) {
-            return "redirect:/registration";
-        }
-        userRepository.save(user);
-        userService.userAdd(user, currentUser, locale);
-        return "redirect:/registration";
-    }
 }

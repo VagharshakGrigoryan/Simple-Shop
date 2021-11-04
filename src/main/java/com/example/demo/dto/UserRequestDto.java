@@ -28,6 +28,6 @@ public class UserRequestDto {
     private String password;
     @Size(min = 6,  message = "confirmPassword length should be at least 6 symbol")
     private String confirmPassword;
-    private Role role = Role.USER;
+    private Role role = Role.ADMIN;
 
 }

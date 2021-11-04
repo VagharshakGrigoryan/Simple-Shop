@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Online Shop</title>
@@ -28,6 +27,7 @@
                     <div class="alert alert-danger" th:each="error : ${#fields.errors('name')}"
                          th:text="|Name ${error}|"></div>
                 </div>
+                <br>
                 <div class="form-group">
                     <label>Description: </label>
                     <br>
@@ -43,12 +43,12 @@
                                size="200"/>
                     </label>
                 </div>
+                <br>
                 <div class="form-group">
                     <label>Category: </label>
-                    <br>
                     <label for="category.id"></label><label for="category.id"></label><label
                         for="category.id"></label><select class="form-control" id="category.id" name="category.id">
-                    <option th:value="${null}" th:selected="*{category} == null" disabled>Select a category</option>
+                    <option th:value="${null}" th:selected="*{category}" disabled>Select a category</option>
                     <option th:each="cat : ${categories}"
                             th:value="${cat.id}"
                             th:text="${cat.name}"
@@ -58,7 +58,7 @@
                     </div>
                 </div>
 
-
+                <br>
                 <div class="form-group">
                     <label>Price: </label>
                     <br>
@@ -66,6 +66,7 @@
                         <input class="form-control" type="number" th:field="*{price}" placeholder="Price"/>
                     </label>
                 </div>
+                <br>
                 <button type="submit" class="btn btn-primary">
                     Submit
                 </button>

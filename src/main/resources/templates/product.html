@@ -98,7 +98,7 @@
     <div th:each="comment:${comments}" class="alert alert-info mt-2">
         <td th:text="${comment.text}"></td>
         <td th:text="${comment.createdDate}"></td>
-        <td th:text="${comment.user.firstName}"></td>
+        <td th:text="${comment.user.username}"></td>
     </div>
     <br>
     <form th:action="@{/products{productId}/addComment}" method="post" th:object="${product}">

@@ -28,13 +28,51 @@
     <body>
     <div class="wide" id="all">
         <!-- Top bar-->
-        <div class="top-bar py-2" id="topBar" style="background: #555">
+        <div class="top-bar py-2" id="topBar" style="background: #555 ">
             <div class="container px-lg-0 text-light py-1">
                 <div class="row d-flex align-items-center">
                     <div class="col-md-6 d-md-block d-none">
-                        <p class="mb-0 text-xs"> Contact us on +374 77873284 or vaghog777@mail.ru </p>
+                        <p class="mb-0 text-xs">
+                            <!-- clock widget start -->
+                            <script type="text/javascript"> var css_file = document.createElement("link");
+                            css_file.setAttribute("rel", "stylesheet");
+                            css_file.setAttribute("type", "text/css");
+                            css_file.setAttribute("href", "https://s.bookcdn.com//css/cl/bw-cl-c22.css?v=0.0.1");
+                            document.getElementsByTagName("head")[0].appendChild(css_file); </script>
+                        <div id="tw_22_734945614">
+                            <div style="width:200px; height:10px; margin: 0 auto"><a
+                                    href="https://nochi.com/time/gyumri-55961" style="color: white">Гюмри</a><br/></div>
+                        </div>
+                        <script type="text/javascript"> function setWidgetData_734945614(data) {
+                            if (typeof (data) != 'undefined' && data.results.length > 0) {
+                                for (var i = 0; i < data.results.length; ++i) {
+                                    var objMainBlock = '';
+                                    var params = data.results[i];
+                                    objMainBlock = document.getElementById('tw_' + params.widget_type + '_' + params.widget_id);
+                                    if (objMainBlock !== null) objMainBlock.innerHTML = params.html_code;
+                                }
+                            }
+                        }
+
+                        var clock_timer_734945614 = -1;
+                        widgetSrc = "https://widgets.booked.net/time/info?ver=2;domid=589;type=22;id=734945614;scode=124;city_id=55961;wlangid=20;mode=1;details=0;" +
+                            "background=#FF0000;border_color=#FF0000;color=#FF0000;add_background=#FF0000;" +
+                            "add_color=#FF0000;head_color=#FF0000;border=0;transparent=0";
+                        var widgetUrl = location.href;
+                        widgetSrc += '&ref=' + widgetUrl;
+                        var wstrackId = "";
+                        if (wstrackId) {
+                            widgetSrc += ';wstrackId=' + wstrackId + ';'
+                        }
+                        var timeBookedScript = document.createElement("script");
+                        timeBookedScript.setAttribute("type", "text/javascript");
+                        timeBookedScript.src = widgetSrc;
+                        document.body.appendChild(timeBookedScript); </script>
+
+
                     </div>
                     <div class="col-md-6">
+
                         <div class="d-flex justify-content-md-end justify-content-between">
                             <ul class="list-inline d-block d-md-none mb-0">
                                 <li class="list-inline-item"><a class="text-xs" href="#"><i class="fa fa-phone"></i></a>
@@ -52,26 +90,32 @@
                                 <li class="list-inline-item">
                                     <a class="text-xs text-uppercase fw-bold text-reset" sec:authorize="isAnonymous()"
                                        th:href="@{/login}">
-                                        <i class="fas fa-user me-2"></i><span class="d-none d-md-inline-block">Login</span></a></li>
+                                        <i class="fas fa-user me-2"></i><span
+                                            class="d-none d-md-inline-block">Login</span></a></li>
                                 <form th:action="@{/logout}" method="post">
                                     <button sec:authorize="isAuthenticated()"
-                                            class="btn btn-outline-danger my-auto" >Logout</button>
+                                            class="btn btn-outline-danger my-auto">Logout
+                                    </button>
                                 </form>
                             </ul>
 
                             <ul class="list-inline mb-0 ms-lg-4">
                                 <li class="list-inline-item text-gray-600 m-0"><a class="text-xs social-link-hover"
-                                                                                  href="#" title="Facebook"><i
+                                                                                  href="https://www.facebook.com"
+                                                                                  title="Facebook"><i
                                         class="fab fa-facebook-f"></i></a></li>
                                 <li class="list-inline-item text-gray-600 m-0"><a class="text-xs social-link-hover"
-                                                                                  href="#" title="Twitter"><i
+                                                                                  href="https://twitter.com"
+                                                                                  title="Twitter"><i
                                         class="fab fa-twitter"></i></a></li>
                                 <li class="list-inline-item text-gray-600 m-0"><a class="text-xs social-link-hover"
-                                                                                  th:href="@{/sendMessage}  " title="Linkedin"><i
+                                                                                  href="https://www.linkedin.com"
+                                                                                  title="Linkedin"><i
                                         class="fab fa-linkedin-in"></i></a></li>
                                 <li class="list-inline-item text-gray-600 m-0"><a class="text-xs social-link-hover"
 
-                                                                                 th:href=" @{/allMessages}" title="Email"><i
+                                                                                  th:href=" @{/allMessage}"
+                                                                                  title="Messenger"><i
                                         class="fas fa-envelope"></i></a></li>
                             </ul>
                         </div>
@@ -79,6 +123,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <header class="nav-holder make-sticky">
         <div class="navbar navbar-light bg-white navbar-expand-lg py-0" id="navbar">
@@ -86,6 +131,7 @@
 
                 <a class="navbar-brand" th:href="@{/}"><img class="d-none d-md-inline-block" src="img/logo.png"
                                                             alt="Universal logo" width="100" height="60">
+
 
                     <img class="d-inline-block d-md-none"
                          src="img/logo-small.png"
@@ -110,7 +156,8 @@
                                 <li><a class="dropdown-item text-uppercase border-bottom" th:href="@{/about}"> About
                                     us</a></li>
                             </ul>
-                        </li></ul>
+                        </li>
+                    </ul>
                 </div>
                 <li class="nav-item dropdown menu-large"><a class="nav-link dropdown-toggle" id="featuresMegamenu"
                                                             href="#" role="button" data-bs-toggle="dropdown"
@@ -122,7 +169,8 @@
                                                            src="img/template-easy-customize.png" alt=""></div>
                                 <div class="col-lg-3 col-md-6">
                                     <ul class="list-unstyled mb-3">
-                                        <li><a class="dropdown-item text-uppercase border-bottom" th:href="@{/allCategories}">
+                                        <li><a class="dropdown-item text-uppercase border-bottom"
+                                               th:href="@{/allCategories}">
                                             Categorys</a></li>
                                     </ul>
                                 </div>
@@ -134,8 +182,9 @@
                                                  href="#" role="button" data-bs-toggle="dropdown"
                                                  aria-expanded="false">ADMIN PANEL</a>
                     <ul class="dropdown-menu" aria-labelledby="hpDropdown">
-                        <li><a class="dropdown-item text-uppercase border-bottom" th:href="@{/admin}">Admin panel</a></li>
-
+                        <li><a class="dropdown-item text-uppercase border-bottom" th:href="@{/admin}">Admin panel</a>
+                        </li>
+                        <li><a class="dropdown-item text-uppercase border-bottom" th:href="@{/user}">Users</a></li>
                     </ul>
                 </li>
                 </ul>

@@ -21,4 +21,9 @@ public class MessageService {
     public List<Message> findAllMessagesByToId(Long id) {
         return messageRepository.findByToUser_Id(id);
     }
+
+
+    public void deleteMessage(Long id) {
+        messageRepository.deleteById(id);
+    }
 }

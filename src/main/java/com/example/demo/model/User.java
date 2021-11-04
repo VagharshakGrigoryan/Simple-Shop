@@ -36,13 +36,6 @@ public class User {
     @Column(name = "role")
     @Enumerated(value = EnumType.STRING)
     private Role role;
-    @Enumerated(value = EnumType.STRING)
-    @Column(name = "status")
-    private Status status;
     private boolean isEmailVerified;
     private UUID token;
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
-
 }
