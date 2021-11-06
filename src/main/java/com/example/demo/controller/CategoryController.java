@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Category;
 import com.example.demo.repasitory.CategoryRepository;
-import com.example.demo.service.CategoryServiceImpl;
+import com.example.demo.service.impl.CategoryServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

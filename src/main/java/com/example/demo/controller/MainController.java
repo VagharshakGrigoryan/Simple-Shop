@@ -20,4 +20,8 @@ public class MainController {
 
         return "products";
     }
+    @GetMapping("/403")
+    public String forbidden() {
+        return "403";
+    }
 }

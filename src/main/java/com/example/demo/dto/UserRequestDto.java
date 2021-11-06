@@ -1,6 +1,6 @@
 package com.example.demo.dto;
 
-import com.example.demo.model.Role;
+import com.example.demo.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,6 +28,6 @@ public class UserRequestDto {
     private String password;
     @Size(min = 6,  message = "confirmPassword length should be at least 6 symbol")
     private String confirmPassword;
-    private Role role = Role.ADMIN;
+    private User.Role role = User.Role.ADMIN;
 
 }
