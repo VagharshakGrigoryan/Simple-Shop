@@ -2,6 +2,7 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
+
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>Online Shop</title>
@@ -22,14 +23,14 @@
 
     .cart {
         background-color: #212121;
-        color: white;
+        color: rgba(56, 183, 179, 0.79);
         margin-top: 10px;
         font-size: 12px;
         font-weight: 900;
         width: 100%;
         height: 39px;
         padding-top: 9px;
-        box-shadow: 0px 5px 10px #212121
+        box-shadow: 10px 5px 10px #212121
     }
 
     .card {
@@ -49,9 +50,9 @@
     }
 
     .card {
-        box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
-        border-radius: 5px;
-        padding-bottom: 10px
+        box-shadow: 0 50px 70px rgba(93, 181, 197, 0.89);
+        border-radius: 20px;
+        padding-bottom: 15px
     }</style>
 </head>
 <body oncontextmenu='return false' class='snippet-body'>
@@ -63,12 +64,12 @@
         <div class="card-body text-center mx-auto">
             <div th:object="${product}">
                 <h3 th:text="${product.name}"></h3>
-                <p th:text = "${product.description}"></p>
-                <p th:text = "${product.price}+ '$'"></p>
+                <p th:text="${product.description}"></p>
+                <p th:text="${product.price}+ '$'"></p>
 
             </div>
             <div class='cvp'>
-                <h5 class="card-title font-weight-bold" ></h5>
+                <h5 class="card-title font-weight-bold"></h5>
                 <p class="card-text"></p> <a th:href="@{/products/{productId}/edit(productId=${product.id})}"
                                              class="btn details px-auto">view details
             </a><br/>
@@ -99,6 +100,7 @@
         <td th:text="${comment.text}"></td>
         <td th:text="${comment.createdDate}"></td>
         <td th:text="${comment.user.username}"></td>
+
     </div>
     <br>
     <form th:action="@{/products{productId}/addComment}" method="post" th:object="${product}">
@@ -106,19 +108,19 @@
         <input type="hidden" th:value="${product.id}" name="product.Id">
 
         <label>
-            <textarea rows="2" cols="165"  name="text" placeholder="add your comment" class="form-control" ></textarea>
+            <textarea rows="2" cols="165" name="text" placeholder="add your comment" class="form-control"></textarea>
         </label>
         <br>
         <br>
 
-        <button class="btn btn-warning" type="submit"> Add comment </button>
+        <button class="btn btn-warning" type="submit"> Add comment</button>
 
 
     </form>
     <br>
     <br>
 
-    <form th:action="'/products/' + ${product.id} + '/remove'" method="post" th:object="${product}">
+    <form th:action="'/products/' + ${product.id} + '/remove'" method="post" th:object="${product}" sec:authorize="hasAnyAuthority('ADMIN')">
         <button class="btn btn-warning" type="submit" style="text-align: right"> Delet</button>
     </form>
 </div>
@@ -126,7 +128,6 @@
 <script type='text/javascript'
         src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
 <script type='text/javascript'></script>
-
 
 
 <div th:insert="bloks/footer :: footer"></div>

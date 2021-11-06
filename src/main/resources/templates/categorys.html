@@ -29,17 +29,20 @@
 
   <div th:each="category : ${categorys}" class="alert alert-info mt-2">
     <h3 th:text="${category.name}"></h3>
-    <a th:href="@{/deleteCategory/{id}(id=${category.getId()})}" href="#" class="btn btn-warning" ><span>delete</span></a>
+
+    <a th:href="@{/deleteCategory/{id}(id=${category.getId()})}" href="#" class="btn btn-warning" sec:authorize="hasAnyAuthority('ADMIN')"><span>delete</span></a>
+
   </div>
+
   <form th:action="@{/addCategory}"
-        method="post" th:object="${categorys}" >
+        method="post" th:object="${categorys}"  >
 
   <label>
-      <input type= "text" rows="2" cols="165"  name="name" placeholder="add category" class="form-control" >
+      <input type= "text" rows="2" cols="165"  name="name" placeholder="add category" class="form-control" sec:authorize="hasAnyAuthority('ADMIN')">
   </label>
     <br>
     <br>
-    <button class="btn btn-warning" type="submit" > Add </button>
+    <button class="btn btn-warning" type="submit" sec:authorize="hasAnyAuthority('ADMIN')"> Add </button>
 </form>
 </div>
 <br>

@@ -1,9 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Category;
-import com.example.demo.model.Comment;
-import com.example.demo.model.Product;
-import com.example.demo.model.Transaction;
+import com.example.demo.model.*;
 import com.example.demo.repasitory.ProductRepository;
 import com.example.demo.security.CurrentUser;
 import com.example.demo.service.CategoryService;

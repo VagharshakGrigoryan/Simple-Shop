@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
@@ -47,12 +46,6 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.getProductsByCategoryId(categoryId);
     }
 
-    @Override
-    public Long getProductsTotalSumByCategory(Long categoryId) {
-        List<Product> products = getProductsByCategory(categoryId);
-        int totalSum = products.stream().mapToInt(Product::getPrice).sum();
-        return (long) totalSum;
-    }
 
     @Override
     public List<Product> getProductsByPage(Pageable pageable) {
@@ -74,4 +67,3 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll();
     }
 }
-

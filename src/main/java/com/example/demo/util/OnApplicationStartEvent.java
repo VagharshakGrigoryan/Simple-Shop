@@ -1,7 +1,6 @@
 package com.example.demo.util;
 
 
-import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import com.example.demo.repasitory.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +24,7 @@ public class OnApplicationStartEvent implements ApplicationListener<ApplicationR
                     .lastName("admin")
                     .email("admin@mail.com")
                     .password(passwordEncoder.encode("admin"))
-                    .role(Role.ADMIN)
+                    .role(User.Role.ADMIN)
                     .username("admin")
                     .build());
         }
